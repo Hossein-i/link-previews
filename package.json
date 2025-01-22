@@ -1,0 +1,37 @@
+{
+  "name": "link-previews",
+  "version": "0.0.0",
+  "description": "A React component than renders beautiful, fully-customizable link previews.",
+  "keywords": [
+    "react",
+    "component",
+    "link",
+    "previews"
+  ],
+  "homepage": "https://github.com/Hossein-i/link-previews#readme-ov-file",
+  "bugs": {
+    "url": "https://github.com/Hossein-i/link-previews/issues",
+    "email": "sayhi@hossein-i.ir"
+  },
+  "license": "ISC",
+  "author": {
+    "name": "Hossein-i",
+    "email": "sayhi@hossein-i.ir",
+    "url": "https://hossein-i.ir"
+  },
+  "funding": [
+    {
+      "type": "Zarinpal",
+      "url": "https://zarinp.al/668251"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hossein-i/link-previews.git"
+  },
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
