@@ -55,10 +55,16 @@
     "prepare": "husky",
     "commit": "cz"
   },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "devDependencies": {
     "@eslint/js": "^9.18.0",
     "@types/eslint": "^8",
     "@types/jest": "^29.5.14",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
     "@types/node": "^22.10.9",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
@@ -85,6 +91,10 @@
     "tsc-alias": "^1.8.10",
     "typescript": "^5.7.3",
     "typescript-eslint": "^7.0.0"
+  },
+  "resolutions": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0"
   },
   "config": {
     "commitizen": {
