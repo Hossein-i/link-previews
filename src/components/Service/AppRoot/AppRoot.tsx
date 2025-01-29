@@ -1,0 +1,65 @@
+'use client';
+
+import React, { forwardRef, HTMLAttributes } from 'react';
+import styles from './AppRoot.module.css';
+
+import { classNames } from '@/helpers/classNames';
+import { multipleRef } from '@/helpers/react/refs';
+import { useObjectMemo } from '@/hooks/useObjectMemo';
+
+import { AppRootContext, AppRootContextInterface } from './AppRootContext';
+import { useAppearance } from './hooks/useAppearance';
+import { usePortalContainer } from './hooks/usePortalContainer';
+import { usePlatform } from './hooks/usePlatform';
+
+export interface AppRootProps extends HTMLAttributes<HTMLDivElement> {
+  /** Application platform, determined automatically if nothing passed */
+  platform?: AppRootContextInterface['platform'];
+  /** Application appearance, determined automatically if nothing passed */
+  appearance?: AppRootContextInterface['appearance'];
+  /** Rewriting portal container for rendering, AppRoot container as default */
+  portalContainer?: AppRootContextInterface['portalContainer'];
+}
+
+export const AppRoot = forwardRef<HTMLDivElement, AppRootProps>(
+  (
+    {
+      platform: platformProp,
+      appearance: appearanceProp,
+      portalContainer: portalContainerProp,
+      children,
+      className,
+      ...restProps
+    },
+    ref
+  ) => {
+    const appearance = useAppearance(appearanceProp);
+    const portalContainer = usePortalContainer(portalContainerProp);
+    const platform = usePlatform(platformProp);
+
+    const contextValue = useObjectMemo({
+      appearance,
+      portalContainer,
+      isRendered: true,
+    });
+
+    return (
+      <div
+        ref={multipleRef(ref, portalContainer)}
+        className={classNames(
+          styles.wrapper,
+          platform === 'ios' && styles['wrapper--ios'],
+          appearance === 'dark' && styles['wrapper--dark'],
+          className
+        )}
+        {...restProps}
+      >
+        <AppRootContext.Provider value={contextValue}>
+          {children}
+        </AppRootContext.Provider>
+      </div>
+    );
+  }
+);
+
+AppRoot.displayName = 'AppRoot';
