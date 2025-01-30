@@ -63,8 +63,9 @@
     "commit": "cz"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "next": "^13 || 14 || ^15 ",
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
@@ -81,6 +82,7 @@
     "@testing-library/react": "^16.2.0",
     "@types/eslint": "^8",
     "@types/jest": "^29.5.14",
+    "@types/next": "^8.0.7",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
@@ -144,6 +146,7 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
-    "@swc/helpers": "^0.5.15"
+    "@swc/helpers": "^0.5.15",
+    "cheerio": "^1.0.0"
   }
 }
