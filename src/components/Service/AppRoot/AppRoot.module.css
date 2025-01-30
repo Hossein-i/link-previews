@@ -1,0 +1,171 @@
+.wrapper {
+  --lp--font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Roboto',
+    'Apple Color Emoji', 'Helvetica Neue', sans-serif;
+
+  --lp--font_weight--accent1: 700;
+  --lp--font_weight--accent2: 600;
+  --lp--font_weight--accent3: 400;
+
+  --lp--large_title--font_size: 34px;
+  --lp--large_title--line_height: 42px;
+
+  --lp--title1--font_size: 28px;
+  --lp--title1--line_height: 36px;
+  --lp--title2--font_size: 24px;
+  --lp--title2--line_height: 32px;
+  --lp--title3--font_size: 20px;
+  --lp--title3--line_height: 24px;
+
+  --lp--headline--font_size: 19px;
+  --lp--headline--line_height: 28px;
+
+  --lp--text--font_size: 17px;
+  --lp--text--line_height: 26px;
+
+  --lp--subheadline1--font_size: 16px;
+  --lp--subheadline1--line_height: 24px;
+  --lp--subheadline2--font_size: 15px;
+  --lp--subheadline2--line_height: 22px;
+
+  --lp--caption1--font_size: 13px;
+  --lp--caption1--line_height: 20px;
+  --lp--caption2--font_size: 11px;
+  --lp--caption2--line_height: 16px;
+
+  --lp--border--width: 1px;
+  --lp--base--section--box_shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+
+  /** Native tokens */
+  --lp--bg_color: var(--tg-theme-bg-color, #ffffff);
+  --lp--text_color: var(--tg-theme-text-color, #000000);
+  --lp--hint_color: var(--tg-theme-hint-color, #707579);
+  --lp--link_color: var(--tg-theme-link-color, #007aff);
+  --lp--button_color: var(--tg-theme-button-color, #007aff);
+  --lp--button_text_color: var(--tg-theme-button-text-color, #ffffff);
+  --lp--secondary_bg_color: var(--tg-theme-secondary-bg-color, #efeff4);
+  --lp--header_bg_color: var(--tg-theme-header-bg-color, #ffffff);
+  --lp--accent_text_color: var(--tg-theme-accent-text-color, #007aff);
+  --lp--section_bg_color: var(--tg-theme-section-bg-color, #ffffff);
+  --lp--section_header_text_color: var(
+    --tg-theme-section-header-text-color,
+    #707579
+  );
+  --lp--subtitle_text_color: var(--tg-theme-subtitle-text-color, #707579);
+  --lp--destructive_text_color: var(--tg-theme-destructive-text-color, #e53935);
+  /** End of native tokens */
+
+  /* Custom lib tokens */
+  --lp--skeleton: rgba(255, 255, 255, 0.03);
+  --lp--divider: rgba(0, 0, 0, 0.15);
+  --lp--outline: rgba(0, 0, 0, 0.05);
+  --lp--surface_primary: rgba(255, 255, 255, 0.95);
+  --lp--tertiary_bg_color: #f4f4f7;
+  --lp--quartenary_bg_color: #f6f6fa;
+  --lp--segmented_control_active_bg: #ffffff;
+  --lp--card_bg_color: #ffffff;
+  --lp--secondary_hint_color: #a2acb0;
+  --lp--secondary_fill: rgba(67, 120, 255, 0.1);
+  --lp--green: #31d158;
+  --lp--destructive_background: #e53935;
+  --lp--primary_code_highlight: #4378ff;
+  --lp--secondary_code_highlight: #b00fb4;
+  --lp--tertiary_code_highlight: #3a9f20;
+  --lp--plain_background: rgba(0, 0, 0, 0.04);
+  --lp--plain_foreground: rgba(0, 0, 0, 0.8);
+  --lp--toast_accent_color: #55a6ff;
+  /* End of custom lib tokens */
+
+  /** Non-theme tokens */
+  --lp--surface_dark: rgba(56, 56, 56, 0.85);
+  --tooltip_background_dark: rgba(0, 0, 0, 0.85);
+  --lp--white: #ffffff;
+  --lp--black: #000000;
+
+  --lp--z-index--simple: 1;
+  --lp--z-index--skeleton: 2;
+  --lp--z-index--overlay: 3;
+
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+
+  color: var(--lp--text_color);
+}
+
+.wrapper--dark {
+  /* Native tokens */
+  --lp--bg_color: var(--tg-theme-bg-color, #212121);
+  --lp--text_color: var(--tg-theme-text-color, #ffffff);
+  --lp--hint_color: var(--tg-theme-hint-color, #aaaaaa);
+  --lp--link_color: var(--tg-theme-link-color, #2990ff);
+  --lp--button_color: var(--tg-theme-button-color, #2990ff);
+  --lp--button_text_color: var(--tg-theme-button-text-color, #ffffff);
+  --lp--secondary_bg_color: var(--tg-theme-secondary-bg-color, #0f0f0f);
+  --lp--header_bg_color: var(--tg-theme-header-bg-color, #212121);
+  --lp--accent_text_color: var(--tg-theme-accent-text-color, #007aff);
+  --lp--section_bg_color: var(--tg-theme-section-bg-color, #212121);
+  --lp--section_header_text_color: var(
+    --tg-theme-section-header-text-color,
+    #aaaaaa
+  );
+  --lp--subtitle_text_color: var(--tg-theme-subtitle-text-color, #aaaaaa);
+  --lp--destructive_text_color: var(--tg-theme-destructive-text-color, #e53935);
+  /** End of native tokens */
+
+  /* Custom lib tokens */
+  --lp--skeleton: rgba(255, 255, 255, 0.03);
+  --lp--divider: rgba(255, 255, 255, 0.05);
+  --lp--outline: rgba(255, 255, 255, 0.1);
+  --lp--surface_primary: rgba(23, 23, 23, 0.95);
+  --lp--tertiary_bg_color: #2a2a2a;
+  --lp--quartenary_bg_color: #2f2f2f;
+  --lp--segmented_control_active_bg: #2f2f2f;
+  --lp--card_bg_color: #242424;
+  --lp--secondary_hint_color: #78797e;
+  --lp--secondary_fill: rgba(41, 144, 255, 0.15);
+  --lp--green: #32e55e;
+  --lp--destructive_background: rgba(255, 35, 35, 0.02);
+  --lp--primary_code_highlight: #2990ff;
+  --lp--secondary_code_highlight: #e937ed;
+  --lp--tertiary_code_highlight: #5ae536;
+  --lp--plain_background: rgba(255, 255, 255, 0.08);
+  --lp--plain_foreground: rgba(255, 255, 255, 0.95);
+  /* End of custom lib tokens */
+}
+
+@media (min-resolution: 2dppx) {
+  .wrapper {
+    --lp--border--width: 0.5px;
+  }
+}
+
+@supports (padding-top: constant(safe-area-inset-bottom)) {
+  .wrapper {
+    --lp--safe_area_inset_bottom: constant(safe-area-inset-bottom);
+  }
+}
+
+@supports (padding-top: env(safe-area-inset-bottom)) {
+  .wrapper {
+    --lp--safe_area_inset_bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@supports (
+  color: color-mix(in srgb, var(--lp--accent_text_color) 10%, transparent)
+) {
+  .wrapper {
+    --lp--secondary_fill: color-mix(
+      in srgb,
+      var(--lp--accent_text_color) 10%,
+      transparent
+    );
+  }
+
+  .wrapper--dark {
+    --lp--secondary_fill: color-mix(
+      in srgb,
+      var(--lp--accent_text_color) 15%,
+      transparent
+    );
+  }
+}
