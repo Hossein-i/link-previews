@@ -1,4 +1,6 @@
-import { isValidElement } from 'react';
+export const isValidHTML = (input: Element): boolean => {
+  return input instanceof HTMLElement;
+};
 
 export const canUseDOM = (() =>
   !!(
@@ -12,7 +14,7 @@ export const getHTMLElementByChildren = (
   index: number
 ) => {
   const foundEl = children[index];
-  return isValidElement(foundEl) ? foundEl : null;
+  return isValidHTML(foundEl) ? foundEl : null;
 };
 
 export const getHTMLElementSiblingByDirection = <T extends Element>(
@@ -32,5 +34,5 @@ export const getHTMLElementSiblingByDirection = <T extends Element>(
       return null;
   }
 
-  return isValidElement(siblingEl) ? siblingEl : null;
+  return siblingEl && isValidHTML(siblingEl) ? siblingEl : null;
 };

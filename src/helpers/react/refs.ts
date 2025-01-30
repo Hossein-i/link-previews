@@ -13,7 +13,7 @@ export const setRef = <T>(element: T, ref?: Ref<T>): void => {
 
 export const multipleRef = <T>(
   ...refs: Array<Ref<T> | undefined>
-): RefObject<T> => {
+): MutableRefObject<T | null> => {
   let current: T | null = null;
   return {
     get current() {
