@@ -85,6 +85,9 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    alias: {
+      '@': path.resolve(__dirname, 'src/'),
+    },
   },
   devtool: 'source-map',
   plugins: [
