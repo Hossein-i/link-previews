@@ -1,14 +1,14 @@
 {
   "name": "link-previews",
   "version": "0.1.0",
-  "description": "A React component than renders beautiful, fully-customizable link previews.",
+  "description": "A React component that renders beautiful, fully-customizable link previews.",
   "keywords": [
     "react",
     "component",
     "link",
     "previews"
   ],
-  "homepage": "https://github.com/Hossein-i/link-previews#readme-ov-file",
+  "homepage": "https://github.com/Hossein-i/link-previews#readme",
   "bugs": {
     "url": "https://github.com/Hossein-i/link-previews/issues",
     "email": "sayhi@hossein-i.ir"
@@ -40,32 +40,35 @@
     "./dist/cjs/index.js"
   ],
   "engines": {
-    "node": ">=18.0.0",
+    "node": ">=18.2.0",
     "npm": ">=7.0.0"
   },
   "scripts": {
-    "build": "concurrently \"npm run build:test\" \"npm run build:types\" \"npm run build:js-css\"",
-    "build:test": "jest",
+    "dev": "concurrently \"npm run dev:*\"",
+    "dev:storybook": "storybook dev -p 6006 --docs",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src/**/*.ts",
+    "build": "concurrently \"npm run build:*\"",
+    "build:test": "npm run test",
+    "build:lint": "npm run lint",
+    "build:format": "prettier --write src/**/*.ts",
     "build:types": "concurrently \"npm run tsc:*\"",
     "build:js-css": "concurrently \"npm run swc:*\" \"npm run postcss\"",
+    "build:storybook": "storybook build --docs",
     "postcss": "webpack --config webpack.styles.config.js",
     "swc-base": "cross-env NODE_ENV=production swc src/ --config-file package.swcrc --extensions .tsx,.jsx,.ts,.js",
     "swc:es6": "npm run swc-base -- -d dist -s",
     "swc:cjs": "npm run swc-base -- -d dist/cjs -s -C module.type=commonjs",
     "tsc:es6": "cross-env NODE_ENV=production tsc --emitDeclarationOnly --declaration -p tsconfig.dist.json && tsc-alias",
     "tsc:cjs": "cross-env NODE_ENV=production tsc --emitDeclarationOnly --declaration --outDir dist/cjs/ -p tsconfig.dist.json && tsc-alias",
-    "dev": "storybook dev -p 6006 --docs",
-    "storybook:build": "storybook build --docs",
-    "ncu": "ncu -i --format group",
-    "lint": "eslint src/**/*.ts",
-    "format": "prettier --write src/**/*.ts",
     "prepare": "husky",
+    "ncu": "ncu -i --format group",
     "commit": "cz"
   },
-  "peerDependencies": {
-    "next": "^13 || 14 || ^15 ",
-    "react": "^18 || ^19",
-    "react-dom": "^18 || ^19"
+  "dependencies": {
+    "@swc/helpers": "^0.5.15",
+    "cheerio": "^1.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
@@ -78,13 +81,14 @@
     "@svgr/webpack": "^8.1.0",
     "@swc/cli": "^0.6.0",
     "@swc/core": "^1.10.12",
+    "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@types/eslint": "^8",
     "@types/jest": "^29.5.14",
-    "@types/next": "^8.0.7",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
+    "@types/react-test-renderer": "^18.2.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
     "autoprefixer": "^10.4.20",
@@ -119,11 +123,12 @@
     "postcss-logical": "^8.0.0",
     "postcss-modules": "^6.0.1",
     "prettier": "^3.4.2",
+    "react-test-renderer": "^18.2.0",
     "remove-files-webpack-plugin": "^1.5.0",
     "storybook": "^7.6.7",
     "swc-loader": "^0.2.6",
-    "swc-plugin-css-modules": "^2.0.2",
-    "swc-plugin-transform-remove-imports": "^3.0.2",
+    "swc-plugin-css-modules": "^2.1.0",
+    "swc-plugin-transform-remove-imports": "^3.1.0",
     "ts-jest": "^29.2.5",
     "ts-loader": "^9.5.2",
     "ts-node": "^10.9.2",
@@ -133,20 +138,17 @@
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1"
   },
-  "resolutions": {
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0"
+  "peerDependencies": {
+    "next": "^13.0.0 || ^14.0.0 || ^15.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-emoji-conventional"
     }
-  },
-  "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
-  },
-  "dependencies": {
-    "@swc/helpers": "^0.5.15",
-    "cheerio": "^1.0.0"
   }
 }

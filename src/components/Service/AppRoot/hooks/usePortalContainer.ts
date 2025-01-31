@@ -16,5 +16,5 @@ export const usePortalContainer = (
     return appContext.portalContainer;
   }
 
-  return useRef(null);
+  return useRef<HTMLDivElement>(document.createElement('div'));
 };
