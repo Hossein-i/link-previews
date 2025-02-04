@@ -11,7 +11,7 @@ export const canUseDOM = (() =>
 
 export const getHTMLElementByChildren = (
   children: HTMLCollection,
-  index: number
+  index: number,
 ) => {
   const foundEl = children[index];
   return isValidHTML(foundEl) ? foundEl : null;
@@ -19,7 +19,7 @@ export const getHTMLElementByChildren = (
 
 export const getHTMLElementSiblingByDirection = <T extends Element>(
   el: T,
-  direction: 'left' | 'right'
+  direction: 'left' | 'right',
 ) => {
   let siblingEl: Element | null = null;
   switch (direction) {

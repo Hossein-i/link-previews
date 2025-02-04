@@ -70,8 +70,8 @@ describe('isApplePlatform', () => {
       value: 'iPad',
       writable: true,
     });
-    (window as any).MSStream = true;
+    (window as { MSStream?: boolean }).MSStream = true;
     expect(isApplePlatform()).toBe(false);
-    delete (window as any).MSStream;
+    delete (window as typeof window & { MSStream?: boolean }).MSStream;
   });
 });

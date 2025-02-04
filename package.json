@@ -44,17 +44,16 @@
     "npm": ">=7.0.0"
   },
   "scripts": {
-    "dev": "concurrently \"npm run dev:*\"",
+    "dev": "concurrently -r \"npm run dev:*\"",
     "dev:storybook": "storybook dev -p 6006 --docs",
     "test": "jest",
     "test:watch": "jest --watch",
-    "lint": "eslint src/**/*.ts",
-    "build": "concurrently \"npm run build:*\"",
+    "lint": "eslint src/**/*.ts --fix",
+    "format": "prettier --write src/**/*.ts",
+    "build": "concurrently -r \"npm run build:*\"",
     "build:test": "npm run test",
-    "build:lint": "npm run lint",
-    "build:format": "prettier --write src/**/*.ts",
-    "build:types": "concurrently \"npm run tsc:*\"",
-    "build:js-css": "concurrently \"npm run swc:*\" \"npm run postcss\"",
+    "build:types": "concurrently -r \"npm run tsc:*\"",
+    "build:js-css": "concurrently -r \"npm run swc:*\" \"npm run postcss\"",
     "build:storybook": "storybook build --docs",
     "postcss": "webpack --config webpack.styles.config.js",
     "swc-base": "cross-env NODE_ENV=production swc src/ --config-file package.swcrc --extensions .tsx,.jsx,.ts,.js",
@@ -101,6 +100,7 @@
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-prettier": "^10.0.1",
+    "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.2.3",
@@ -144,7 +144,10 @@
     "react-dom": "^18.2.0"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
+    "**/*": [
+      "npm run lint",
+      "npm run format"
+    ]
   },
   "config": {
     "commitizen": {

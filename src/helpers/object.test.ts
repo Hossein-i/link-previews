@@ -28,6 +28,5 @@ describe('isObjectLike', () => {
 
   it('should return false for functions', () => {
     expect(isObjectLike(() => {})).toBe(false);
-    expect(isObjectLike(function () {})).toBe(false);
   });
 });

@@ -1,7 +1,14 @@
 module.exports = {
   root: true,
   plugins: ['@typescript-eslint', 'import', 'prettier', 'simple-import-sort'],
-  extends: ['airbnb', 'airbnb-typescript', 'prettier', 'plugin:@typescript-eslint/recommended', 'plugin:import/typescript', 'plugin:storybook/recommended'],
+  extends: [
+    'airbnb',
+    'airbnb-typescript',
+    'prettier',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:import/typescript',
+    'plugin:storybook/recommended',
+  ],
   env: {
     jest: true,
     browser: true,
@@ -114,5 +121,13 @@ module.exports = {
   ],
   parserOptions: {
     project: './tsconfig.json',
+  },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [['@', './src']],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
   },
 };

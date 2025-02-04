@@ -1,20 +1,16 @@
 type ControlTypes = 'text' | null;
 
 export const setControlsTypes = (controls: string[], type: ControlTypes) => {
-  return controls.reduce<
-    Record<
-      string,
-      {
-        control: { type: ControlTypes };
-      }
-    >
-  >((acc, control) => {
-    acc[control] = {
-      control: { type },
-    };
+  return controls.reduce<Record<string, { control: { type: ControlTypes } }>>(
+    (acc, control) => {
+      acc[control] = {
+        control: { type },
+      };
 
-    return acc;
-  }, {});
+      return acc;
+    },
+    {},
+  );
 };
 
 export const hideControls = (...controls: string[]) => {
