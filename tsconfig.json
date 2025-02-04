@@ -115,10 +115,5 @@
   },
   "include": ["**/*.tsx", "**/*.ts", "**/*.js", ".eslintrc.js"],
   "exclude": ["node_modules", "dist"],
-  "files": [
-    "./types/declarations.d.ts",
-    "src/errors/unknown-action.ts",
-    "src/errors/invalid-url.ts",
-    "src/errors/fetch-failed.ts"
-  ]
+  "files": ["./types/declarations.d.ts"]
 }

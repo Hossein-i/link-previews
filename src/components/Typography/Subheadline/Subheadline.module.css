@@ -1,0 +1,9 @@
+.wrapper--1 {
+  font-size: var(--lp--subheadline1--font_size);
+  line-height: var(--lp--subheadline1--line_height);
+}
+
+.wrapper--2 {
+  font-size: var(--lp--subheadline2--font_size);
+  line-height: var(--lp--subheadline2--line_height);
+}
