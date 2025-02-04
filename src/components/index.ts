@@ -1,3 +1,4 @@
+export * from './Blocks';
 export * from './Feedback';
 export * from './Misc';
 export * from './Service';
