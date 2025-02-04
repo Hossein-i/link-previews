@@ -1,33 +1,45 @@
-import { FetchFailed, InvalidUrl, UnknownAction } from '@/errors';
 import * as Cheerio from 'cheerio';
+
 import { Cache } from '../helpers/cache';
+
+import { FetchFailed } from '@/errors/fetch-failed';
+import { InvalidUrl } from '@/errors/invalid-url';
+import { UnknownAction } from '@/errors/unknown-action';
+
+/**
+ * Success response from the action
+ */
+export type LPSuccessResponse = {
+  /**
+   * Status of the action
+   */
+  status: 'success';
+
+  /**
+   * Metadata object
+   */
+  data: Metadata;
+};
+
+/**
+ * Failed response from the action
+ */
+export type LPFailedResponse = {
+  /**
+   * Status of the action
+   */
+  status: 'error';
+
+  /**
+   * Error message
+   */
+  error: string;
+};
 
 /**
  * Response from the action
  */
-export type LPResponse =
-  | {
-      /**
-       * Status of the action
-       */
-      status: 'success';
-
-      /**
-       * Metadata object
-       */
-      data: Metadata;
-    }
-  | {
-      /**
-       * Status of the action
-       */
-      status: 'error';
-
-      /**
-       * Error message
-       */
-      error: string;
-    };
+export type LPResponse = LPSuccessResponse | LPFailedResponse;
 
 /**
  * Metadata object
@@ -68,7 +80,7 @@ export interface LinkPreviewsProps {
  *
  * @example
  * ```tsx
- * // lib/link-previews.ts
+ * // libs/link-previews.ts
  * import { LinkPreviews } from 'link-previews/server';
  * export const { handler } = new LinkPreviews({ ttl: 3.6e+6 });
  *
@@ -91,7 +103,7 @@ export interface LinkPreviewsProps {
  *
  * @example
  * ```tsx
- * // lib/link-previews.ts
+ * // libs/link-previews.ts
  * import { LinkPreviews } from 'link-previews/server';
  * export const { action } = new LinkPreviews({ ttl: 3.6e+6 });
  *
@@ -148,7 +160,7 @@ export class LinkPreviews {
    * ```
    */
   static getUrlMetadata = async (
-    url: string
+    url: string,
   ): Promise<Metadata & { url: string }> => {
     const res = await fetch(url);
 
@@ -181,7 +193,7 @@ export class LinkPreviews {
    */
   action = async (
     prevState: LPResponse | undefined,
-    formData: FormData
+    formData: FormData,
   ): Promise<LPResponse> => {
     try {
       const url = formData.get('url') as string;
@@ -190,14 +202,13 @@ export class LinkPreviews {
       if (cachedMetadata) {
         if (prevState) {
           return prevState;
-        } else {
-          return { status: 'success', data: cachedMetadata };
         }
-      } else {
-        const metadata = await LinkPreviews.getUrlMetadata(url);
-        this.cache.set(url, metadata);
-        return { status: 'success', data: metadata };
+        return { status: 'success', data: cachedMetadata };
       }
+
+      const metadata = await LinkPreviews.getUrlMetadata(url);
+      this.cache.set(url, metadata);
+      return { status: 'success', data: metadata };
     } catch (error) {
       return { status: 'error', error: (error as Error).message };
     }
@@ -215,11 +226,12 @@ export class LinkPreviews {
    * @throws FetchFailed - Failed to fetch URL metadata
    */
   handler = async (request: Request) => {
-    if (request.method !== 'GET' && request.method !== 'POST')
+    if (request.method !== 'GET' && request.method !== 'POST') {
       throw new UnknownAction('Only GET and POST requests are supported');
+    }
 
     const url = new URL(request.url);
-    const searchParams = url.searchParams;
+    const { searchParams } = url;
     const inputUrl = searchParams.get('url');
 
     if (!inputUrl || typeof inputUrl !== 'string') {

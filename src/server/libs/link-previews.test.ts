@@ -2,7 +2,8 @@
  * @jest-environment node
  */
 
-import { InvalidUrl, UnknownAction } from '@/errors';
+import { InvalidUrl } from '@/errors/invalid-url';
+import { UnknownAction } from '@/errors/unknown-action';
 import { LinkPreviews } from './link-previews';
 
 describe('LinkPreviews', () => {
@@ -48,7 +49,7 @@ describe('LinkPreviews', () => {
   it('should handle unknown action', async () => {
     const request = new Request(
       'https://github.com/api?url=https://github.com',
-      { method: 'PUT' }
+      { method: 'PUT' },
     );
     await expect(linkPreviews.handler(request)).rejects.toThrow(UnknownAction);
   });
