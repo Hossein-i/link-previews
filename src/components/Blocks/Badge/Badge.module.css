@@ -29,27 +29,26 @@
 }
 
 .wrapper--primary {
-  color: var(--tgui--button_text_color);
-  background: var(--tgui--button_color);
+  color: var(--lp--button_text_color);
+  background: var(--lp--button_color);
 }
 
 .wrapper--critical {
-  color: var(--tgui--button_text_color);
-  background: var(--tgui--destructive_text_color);
+  color: var(--lp--button_text_color);
+  background: var(--lp--destructive_text_color);
 }
 
 .wrapper--secondary {
-  color: var(--tgui--link_color);
-  background: var(--tgui--secondary_fill);
+  color: var(--lp--link_color);
+  background: var(--lp--secondary_fill);
 }
 
 .wrapper--gray {
-  color: var(--tgui--plain_foreground);
-  background: var(--tgui--plain_background);
+  color: var(--lp--plain_foreground);
+  background: var(--lp--plain_background);
 }
 
 .wrapper--white {
-  color: var(--tgui--link_color);
-  background: var(--tgui--white);
+  color: var(--lp--link_color);
+  background: var(--lp--white);
 }
-
