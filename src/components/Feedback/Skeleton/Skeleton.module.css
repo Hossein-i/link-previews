@@ -1,0 +1,32 @@
+.wrapper {
+  position: relative;
+}
+
+.wrapper--visible::before,
+.wrapper--visible::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: var(--lp--z-index--simple);
+}
+
+.wrapper::before {
+  background: var(--lp--secondary_bg_color);
+}
+
+.wrapper:not(.wrapper--noAnimation)::after {
+  z-index: var(--lp--z-index--skeleton);
+  background-color: var(--lp--bg_color);
+  animation: fade 1.8s linear infinite;
+}
+
+@keyframes fade {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
