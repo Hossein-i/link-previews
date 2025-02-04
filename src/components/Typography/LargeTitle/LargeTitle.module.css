@@ -1,0 +1,4 @@
+.wrapper {
+  font-size: var(--lp--large_title--font_size);
+  line-height: var(--lp--large_title--line_height);
+}
