@@ -36,22 +36,19 @@
   --lp--base--section--box_shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
 
   /** Native tokens */
-  --lp--bg_color: var(--tg-theme-bg-color, #ffffff);
-  --lp--text_color: var(--tg-theme-text-color, #000000);
-  --lp--hint_color: var(--tg-theme-hint-color, #707579);
-  --lp--link_color: var(--tg-theme-link-color, #007aff);
-  --lp--button_color: var(--tg-theme-button-color, #007aff);
-  --lp--button_text_color: var(--tg-theme-button-text-color, #ffffff);
-  --lp--secondary_bg_color: var(--tg-theme-secondary-bg-color, #efeff4);
-  --lp--header_bg_color: var(--tg-theme-header-bg-color, #ffffff);
-  --lp--accent_text_color: var(--tg-theme-accent-text-color, #007aff);
-  --lp--section_bg_color: var(--tg-theme-section-bg-color, #ffffff);
-  --lp--section_header_text_color: var(
-    --tg-theme-section-header-text-color,
-    #707579
-  );
-  --lp--subtitle_text_color: var(--tg-theme-subtitle-text-color, #707579);
-  --lp--destructive_text_color: var(--tg-theme-destructive-text-color, #e53935);
+  --lp--bg_color: #ffffff;
+  --lp--text_color: #000000;
+  --lp--hint_color: #707579;
+  --lp--link_color: #007aff;
+  --lp--button_color: #007aff;
+  --lp--button_text_color: #ffffff;
+  --lp--secondary_bg_color: #efeff4;
+  --lp--header_bg_color: #ffffff;
+  --lp--accent_text_color: #007aff;
+  --lp--section_bg_color: #ffffff;
+  --lp--section_header_text_color: #707579;
+  --lp--subtitle_text_color: #707579;
+  --lp--destructive_text_color: #e53935;
   /** End of native tokens */
 
   /* Custom lib tokens */
@@ -93,22 +90,19 @@
 
 .wrapper--dark {
   /* Native tokens */
-  --lp--bg_color: var(--tg-theme-bg-color, #212121);
-  --lp--text_color: var(--tg-theme-text-color, #ffffff);
-  --lp--hint_color: var(--tg-theme-hint-color, #aaaaaa);
-  --lp--link_color: var(--tg-theme-link-color, #2990ff);
-  --lp--button_color: var(--tg-theme-button-color, #2990ff);
-  --lp--button_text_color: var(--tg-theme-button-text-color, #ffffff);
-  --lp--secondary_bg_color: var(--tg-theme-secondary-bg-color, #0f0f0f);
-  --lp--header_bg_color: var(--tg-theme-header-bg-color, #212121);
-  --lp--accent_text_color: var(--tg-theme-accent-text-color, #007aff);
-  --lp--section_bg_color: var(--tg-theme-section-bg-color, #212121);
-  --lp--section_header_text_color: var(
-    --tg-theme-section-header-text-color,
-    #aaaaaa
-  );
-  --lp--subtitle_text_color: var(--tg-theme-subtitle-text-color, #aaaaaa);
-  --lp--destructive_text_color: var(--tg-theme-destructive-text-color, #e53935);
+  --lp--bg_color: #212121;
+  --lp--text_color: #ffffff;
+  --lp--hint_color: #aaaaaa;
+  --lp--link_color: #2990ff;
+  --lp--button_color: #2990ff;
+  --lp--button_text_color: #ffffff;
+  --lp--secondary_bg_color: #0f0f0f;
+  --lp--header_bg_color: #212121;
+  --lp--accent_text_color: #007aff;
+  --lp--section_bg_color: #212121;
+  --lp--section_header_text_color: #aaaaaa;
+  --lp--subtitle_text_color: #aaaaaa;
+  --lp--destructive_text_color: #e53935;
   /** End of native tokens */
 
   /* Custom lib tokens */
