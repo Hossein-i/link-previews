@@ -1,0 +1,8 @@
+.link {
+  color: var(--lp--link_color);
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
