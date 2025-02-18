@@ -1,16 +1,21 @@
 'use client';
 
-import { ImgHTMLAttributes, isValidElement, ReactNode, SyntheticEvent, useState } from 'react';
+import { ImgHTMLAttributes, isValidElement, ReactNode, useMemo } from 'react';
 import styles from './Image.module.css';
 
 import { ImageBadge } from './components';
+import { useImageHandlers } from './hooks';
 
 import { getBorderRadius } from '@/components/Blocks/Image/helpers/getBorderRadius';
 import { classNames } from '@/helpers/classNames';
 
 export interface ImageProps extends ImgHTMLAttributes<HTMLElement> {
-  /** Specifies the size of the image, with a default of 40. Sizes are defined in pixels. */
-  size?: 20 | 24 | 28 | 40 | 48 | 96;
+  /** Specifies the width of the image container. */
+  width?: number | string;
+  /** Specifies the height of the image container. */
+  height?: number | string;
+  /** Specifies the aspect ratio of the image container (e.g., "16/9"). */
+  aspectRatio?: string;
   /** An element (often an icon) displayed when the image fails to load or the `src` attribute is not provided. */
   fallbackIcon?: ReactNode;
   /** Optional children to render within the image component's container. */
@@ -23,7 +28,9 @@ export interface ImageProps extends ImgHTMLAttributes<HTMLElement> {
  * include additional content, such as badges or overlays, as children.
  */
 export const Image = ({
-  size = 40,
+  width = '100%',
+  height = 'auto',
+  aspectRatio,
   className,
   alt,
   crossOrigin,
@@ -37,41 +44,26 @@ export const Image = ({
   style,
   fallbackIcon,
   children,
-  onLoad,
   onError,
+  onLoad,
   ...restProps
 }: ImageProps) => {
-  const [loaded, setLoaded] = useState(false);
-  const [failed, setFailed] = useState(false);
+  const { failed, loaded, handleImageError, handleImageLoad } = useImageHandlers({ onError, onLoad });
 
-  const hasSrc = src || srcSet;
-  const needShowFallbackIcon = (failed || !hasSrc) && isValidElement(fallbackIcon);
+  const hasSrc = useMemo(() => src || srcSet, [src, srcSet]);
+  const needShowFallbackIcon = useMemo(() => (failed || !hasSrc) && isValidElement(fallbackIcon), [failed, hasSrc, fallbackIcon]);
 
-  const handleImageLoad = (event: SyntheticEvent<HTMLImageElement>) => {
-    if (loaded) {
-      return;
-    }
-
-    setLoaded(true);
-    setFailed(false);
-    onLoad?.(event);
-  };
-
-  const handleImageError = (event: SyntheticEvent<HTMLImageElement>) => {
-    setLoaded(false);
-    setFailed(true);
-    onError?.(event);
-  };
+  const containerStyle = useMemo(() => ({
+    width,
+    height: aspectRatio ? 'auto' : height,
+    aspectRatio,
+    borderRadius: style?.borderRadius || getBorderRadius(Number(width)),
+    ...style,
+  }), [width, height, aspectRatio, style]);
 
   return (
     <div
-      style={{
-        width: size,
-        minWidth: size,
-        height: size,
-        borderRadius: style?.borderRadius || getBorderRadius(size),
-        ...style,
-      }}
+      style={containerStyle}
       className={classNames(
         styles.wrapper,
         loaded && styles['wrapper--loaded'],
