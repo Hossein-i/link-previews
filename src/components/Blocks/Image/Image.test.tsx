@@ -11,8 +11,8 @@ describe('Image Component', () => {
     expect(imgElement).toHaveAttribute('src', 'test.jpg');
   });
 
-  it('applies the correct size to the image container', () => {
-    render(<Image src="test.jpg" size={48} />);
+  it('applies the correct width and height to the image container', () => {
+    render(<Image src="test.jpg" width={48} height={48} />);
     const container = screen.getByRole('img').parentElement;
     expect(container).toHaveStyle({ width: '48px', height: '48px' });
   });
