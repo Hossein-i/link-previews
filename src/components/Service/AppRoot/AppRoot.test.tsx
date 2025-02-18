@@ -1,7 +1,10 @@
 import React from 'react';
+
 import { render } from '@testing-library/react';
-import '@testing-library/jest-dom';
+
 import { AppRoot } from './AppRoot';
+
+import '@testing-library/jest-dom';
 
 describe('AppRoot', () => {
   it('renders without crashing', () => {
@@ -30,7 +33,9 @@ describe('AppRoot', () => {
   });
 
   it('applies custom className', () => {
-    const { container } = render(<AppRoot className="custom-class">Test</AppRoot>);
+    const { container } = render(
+      <AppRoot className="custom-class">Test</AppRoot>,
+    );
     expect(container.firstChild).toHaveClass('custom-class');
   });
 });

@@ -1,21 +1,28 @@
-import "@testing-library/jest-dom";
 import { render } from '@testing-library/react';
+
 import { AppRootContext } from '../AppRootContext';
 import { getBrowserAppearanceSubscriber } from './helpers/getBrowserAppearanceSubscriber';
 import { getInitialAppearance } from './helpers/getInitialAppearance';
 import { useAppearance } from './useAppearance';
 
+import '@testing-library/jest-dom';
+
 jest.mock('./helpers/getInitialAppearance');
 jest.mock('./helpers/getBrowserAppearanceSubscriber');
 
-const TestComponent = ({ appearanceProp }: { appearanceProp?: "light" | "dark" }) => {
+const TestComponent = ({
+  appearanceProp,
+}: {
+  appearanceProp?: 'light' | 'dark';
+}) => {
   const appearance = useAppearance(appearanceProp);
   return <div>{appearance}</div>;
 };
 
 describe('useAppearance', () => {
   const mockGetInitialAppearance = getInitialAppearance as jest.Mock;
-  const mockGetBrowserAppearanceSubscriber = getBrowserAppearanceSubscriber as jest.Mock;
+  const mockGetBrowserAppearanceSubscriber =
+    getBrowserAppearanceSubscriber as jest.Mock;
 
   beforeEach(() => {
     mockGetInitialAppearance.mockReturnValue('light');
@@ -26,7 +33,7 @@ describe('useAppearance', () => {
     const { getByText } = render(
       <AppRootContext.Provider value={{ appearance: 'dark', isRendered: true }}>
         <TestComponent />
-      </AppRootContext.Provider>
+      </AppRootContext.Provider>,
     );
 
     expect(getByText('dark')).toBeInTheDocument();
@@ -45,7 +52,9 @@ describe('useAppearance', () => {
   });
 
   it('should update appearance when appearanceProp changes', () => {
-    const { getByText, rerender } = render(<TestComponent appearanceProp="light" />);
+    const { getByText, rerender } = render(
+      <TestComponent appearanceProp="light" />,
+    );
 
     expect(getByText('light')).toBeInTheDocument();
 

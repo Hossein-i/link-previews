@@ -20,11 +20,13 @@ export const Playground: Story = {
       <Text weight="3" {...args}>
         Text · Regular
       </Text>
-      <br /><br />
+      <br />
+      <br />
       <Text weight="2" {...args}>
         Text · Semibold
       </Text>
-      <br /><br />
+      <br />
+      <br />
       <Text weight="1" {...args}>
         Text · Bold
       </Text>

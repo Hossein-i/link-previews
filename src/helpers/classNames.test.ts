@@ -31,7 +31,13 @@ describe('classNames', () => {
 
   it('should handle mixed types', () => {
     expect(
-      classNames('class1', { class2: true, class3: false }, 123, null, 'class4'),
+      classNames(
+        'class1',
+        { class2: true, class3: false },
+        123,
+        null,
+        'class4',
+      ),
     ).toBe('class1 class2 123 class4');
   });
 });

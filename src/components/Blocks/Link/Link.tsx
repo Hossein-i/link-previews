@@ -3,9 +3,7 @@ import styles from './Link.module.css';
 
 import { classNames } from '@/helpers/classNames';
 
-export interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
-
-}
+export interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {}
 
 /**
  * A functional component that renders an anchor (`<a>`) element with additional styles and properties.

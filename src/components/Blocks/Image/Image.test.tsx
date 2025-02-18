@@ -18,7 +18,9 @@ describe('Image Component', () => {
   });
 
   it('displays fallback icon when image fails to load', () => {
-    render(<Image src="invalid.jpg" fallbackIcon={<span>Fallback Icon</span>} />);
+    render(
+      <Image src="invalid.jpg" fallbackIcon={<span>Fallback Icon</span>} />,
+    );
     const imgElement = screen.getByRole('img');
     fireEvent.error(imgElement);
     expect(screen.getByText('Fallback Icon')).toBeInTheDocument();

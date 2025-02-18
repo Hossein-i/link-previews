@@ -50,8 +50,6 @@ export const WithChildren: Story = {
     children: '😕',
   },
   render: (props) => (
-    <Image {...props}>
-      {(props?.size || 0) <= 28 ? '😕' : '🤨'}
-    </Image>
+    <Image {...props}>{(props?.size || 0) <= 28 ? '😕' : '🤨'}</Image>
   ),
 } satisfies Story;

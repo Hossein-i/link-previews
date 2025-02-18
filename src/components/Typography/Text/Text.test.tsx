@@ -13,7 +13,9 @@ describe('Text component', () => {
   });
 
   it('applies custom className', () => {
-    const { container } = render(<Text className="custom-class">Sample Text</Text>);
+    const { container } = render(
+      <Text className="custom-class">Sample Text</Text>,
+    );
     expect(container.firstChild).toHaveClass('custom-class');
   });
 

@@ -1,6 +1,9 @@
 import React from 'react';
+
 import { render } from '@testing-library/react';
+
 import { AppRootContext, AppRootContextInterface } from './AppRootContext';
+
 import '@testing-library/jest-dom';
 
 describe('AppRootContext', () => {
@@ -13,7 +16,7 @@ describe('AppRootContext', () => {
     const { getByText } = render(
       <AppRootContext.Provider value={{ isRendered: false }}>
         <TestComponent />
-      </AppRootContext.Provider>
+      </AppRootContext.Provider>,
     );
     expect(getByText('Not Rendered')).toBeInTheDocument();
     expect(getByText('Not Rendered')).toBeInTheDocument();
@@ -30,7 +33,8 @@ describe('AppRootContext', () => {
       const context = React.useContext(AppRootContext);
       return (
         <div>
-          {context.isRendered ? 'Rendered' : 'Not Rendered'}, {context.platform}, {context.appearance}
+          {context.isRendered ? 'Rendered' : 'Not Rendered'}, {context.platform}
+          , {context.appearance}
         </div>
       );
     };
@@ -38,7 +42,7 @@ describe('AppRootContext', () => {
     const { getByText } = render(
       <AppRootContext.Provider value={customContext}>
         <TestComponent />
-      </AppRootContext.Provider>
+      </AppRootContext.Provider>,
     );
 
     expect(getByText('Rendered, ios, dark')).toBeInTheDocument();

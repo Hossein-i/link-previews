@@ -1,4 +1,4 @@
-import { MutableRefObject, Ref, RefObject } from 'react';
+import { MutableRefObject, Ref } from 'react';
 
 export const setRef = <T>(element: T, ref?: Ref<T>): void => {
   if (ref) {

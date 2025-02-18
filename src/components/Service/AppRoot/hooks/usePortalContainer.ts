@@ -5,7 +5,7 @@ import { useContext, useRef } from 'react';
 import { AppRootContext, AppRootContextInterface } from '../AppRootContext';
 
 export const usePortalContainer = (
-  portalContainer?: AppRootContextInterface['portalContainer']
+  portalContainer?: AppRootContextInterface['portalContainer'],
 ): NonNullable<AppRootContextInterface['portalContainer']> => {
   if (portalContainer !== undefined) {
     return portalContainer;

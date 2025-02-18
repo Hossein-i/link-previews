@@ -16,7 +16,7 @@ export class LPError extends Error {
 
   constructor(
     message?: string | Error | LPErrorOptions,
-    errorOptions?: LPErrorOptions
+    errorOptions?: LPErrorOptions,
   ) {
     let errorMessage: string | undefined;
     if (typeof message === 'string') {

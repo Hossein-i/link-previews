@@ -18,19 +18,25 @@ describe('Caption Component', () => {
   });
 
   it('applies additional className', () => {
-    const { container } = render(<Caption className="additional-class">Test Caption</Caption>);
+    const { container } = render(
+      <Caption className="additional-class">Test Caption</Caption>,
+    );
     expect(container.firstChild).toHaveClass('wrapper');
     expect(container.firstChild).toHaveClass('wrapper--1');
     expect(container.firstChild).toHaveClass('additional-class');
   });
 
   it('renders with a custom component', () => {
-    const { container } = render(<Caption Component="div">Test Caption</Caption>);
+    const { container } = render(
+      <Caption Component="div">Test Caption</Caption>,
+    );
     expect(container.firstChild).toBeInstanceOf(HTMLDivElement);
   });
 
   it('passes additional props to Typography', () => {
-    const { container } = render(<Caption aria-label="caption">Test Caption</Caption>);
+    const { container } = render(
+      <Caption aria-label="caption">Test Caption</Caption>,
+    );
     expect(container.firstChild).toHaveAttribute('aria-label', 'caption');
   });
 });

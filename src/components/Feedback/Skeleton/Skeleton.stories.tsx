@@ -14,16 +14,16 @@ type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
   render: (args) => (
-    <div style={{
-      width: '400px',
-      border: '1px dashed #9747FF',
-      borderRadius: '5px',
-      padding: '20px',
-    }}>
+    <div
+      style={{
+        width: '400px',
+        border: '1px dashed #9747FF',
+        borderRadius: '5px',
+        padding: '20px',
+      }}
+    >
       <Skeleton {...args}>
-        <div>
-          Hello World...
-        </div>
+        <div>Hello World...</div>
       </Skeleton>
     </div>
   ),

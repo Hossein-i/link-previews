@@ -4,7 +4,7 @@ import { AppRootContext, AppRootContextInterface } from '../AppRootContext';
 import { getInitialPlatform } from './helpers/getInitialPlatform';
 
 export const usePlatform = (
-  platform?: AppRootContextInterface['platform']
+  platform?: AppRootContextInterface['platform'],
 ): NonNullable<AppRootContextInterface['platform']> => {
   if (platform !== undefined) {
     return platform;
