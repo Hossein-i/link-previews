@@ -33,7 +33,9 @@ describe('Typography Component', () => {
   });
 
   it('applies additional class names', () => {
-    const { container } = render(<Typography className="custom-class">Test</Typography>);
+    const { container } = render(
+      <Typography className="custom-class">Test</Typography>,
+    );
     expect(container.firstChild).toHaveClass('custom-class');
   });
 });

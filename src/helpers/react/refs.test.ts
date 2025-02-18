@@ -1,5 +1,6 @@
-import { setRef, multipleRef } from './refs';
-import { MutableRefObject, RefObject } from 'react';
+import { MutableRefObject } from 'react';
+
+import { multipleRef, setRef } from './refs';
 
 describe('setRef', () => {
   it('should set ref as a function', () => {
@@ -30,7 +31,7 @@ describe('multipleRef', () => {
       refFunction1,
       refObject1,
       refFunction2,
-      refObject2
+      refObject2,
     );
     combinedRef.current = 'testElement';
 

@@ -25,7 +25,13 @@ describe('Badge component', () => {
   });
 
   it('renders correctly with different modes', () => {
-    const modes: BadgeProps['mode'][] = ['primary', 'critical', 'secondary', 'gray', 'white'];
+    const modes: BadgeProps['mode'][] = [
+      'primary',
+      'critical',
+      'secondary',
+      'gray',
+      'white',
+    ];
     modes.forEach((mode) => {
       const { container } = renderBadge({ mode });
       expect(container.firstChild).toHaveClass(`wrapper--${mode}`);

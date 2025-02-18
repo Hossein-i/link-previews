@@ -3,14 +3,14 @@
 import React, { forwardRef, HTMLAttributes } from 'react';
 import styles from './AppRoot.module.css';
 
+import { useAppearance } from './hooks/useAppearance';
+import { usePlatform } from './hooks/usePlatform';
+import { usePortalContainer } from './hooks/usePortalContainer';
+import { AppRootContext, AppRootContextInterface } from './AppRootContext';
+
 import { classNames } from '@/helpers/classNames';
 import { multipleRef } from '@/helpers/react/refs';
 import { useObjectMemo } from '@/hooks/useObjectMemo';
-
-import { AppRootContext, AppRootContextInterface } from './AppRootContext';
-import { useAppearance } from './hooks/useAppearance';
-import { usePortalContainer } from './hooks/usePortalContainer';
-import { usePlatform } from './hooks/usePlatform';
 
 export interface AppRootProps extends HTMLAttributes<HTMLDivElement> {
   /** Application platform, determined automatically if nothing passed */
@@ -31,7 +31,7 @@ export const AppRoot = forwardRef<HTMLDivElement, AppRootProps>(
       className,
       ...restProps
     },
-    ref
+    ref,
   ) => {
     const appearance = useAppearance(appearanceProp);
     const portalContainer = usePortalContainer(portalContainerProp);
@@ -50,7 +50,7 @@ export const AppRoot = forwardRef<HTMLDivElement, AppRootProps>(
           styles.wrapper,
           platform === 'ios' && styles['wrapper--ios'],
           appearance === 'dark' && styles['wrapper--dark'],
-          className
+          className,
         )}
         {...restProps}
       >
@@ -59,7 +59,7 @@ export const AppRoot = forwardRef<HTMLDivElement, AppRootProps>(
         </AppRootContext.Provider>
       </div>
     );
-  }
+  },
 );
 
 AppRoot.displayName = 'AppRoot';

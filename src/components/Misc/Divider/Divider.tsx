@@ -3,7 +3,7 @@ import styles from './Divider.module.css';
 
 import { classNames } from '@/helpers/classNames';
 
-export interface DividerProps extends HTMLAttributes<HTMLHRElement> { }
+export interface DividerProps extends HTMLAttributes<HTMLHRElement> {}
 
 /**
  * Represents a horizontal line used to separate content within a layout or component.

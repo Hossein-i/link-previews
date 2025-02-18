@@ -34,13 +34,17 @@ describe('Title component', () => {
   });
 
   it('applies custom className', () => {
-    const { container } = render(<Title className="custom-class">Title with custom class</Title>);
+    const { container } = render(
+      <Title className="custom-class">Title with custom class</Title>,
+    );
     const titleElement = container.querySelector('h3');
     expect(titleElement).toHaveClass('custom-class');
   });
 
   it('uses custom Component prop', () => {
-    const { container } = render(<Title Component="h1">Custom Component Title</Title>);
+    const { container } = render(
+      <Title Component="h1">Custom Component Title</Title>,
+    );
     const titleElement = container.querySelector('h1');
     expect(titleElement).toBeInTheDocument();
     expect(titleElement).toHaveTextContent('Custom Component Title');

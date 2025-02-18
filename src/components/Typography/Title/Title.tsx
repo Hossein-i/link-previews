@@ -42,4 +42,3 @@ export const Title = ({
     Component={Component || titleLevelTags[level]}
   />
 );
-

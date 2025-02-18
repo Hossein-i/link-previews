@@ -21,7 +21,9 @@ describe('ImageBadge', () => {
   });
 
   it('applies additional className', () => {
-    const { container } = render(<ImageBadge type="number" className="extra-class" />);
+    const { container } = render(
+      <ImageBadge type="number" className="extra-class" />,
+    );
     expect(container.firstChild).toHaveClass('extra-class');
   });
 
@@ -30,6 +32,8 @@ describe('ImageBadge', () => {
     console.error = jest.fn();
     render(<ImageBadge type="dot" />);
     // eslint-disable-next-line no-console
-    expect(console.error).toHaveBeenCalledWith('[ImageBadge]: Component supports only type="number"');
+    expect(console.error).toHaveBeenCalledWith(
+      '[ImageBadge]: Component supports only type="number"',
+    );
   });
 });

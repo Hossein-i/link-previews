@@ -1,11 +1,11 @@
-import { canUseDOM } from '@/helpers/dom';
-
 import { AppRootContextInterface } from '../../AppRootContext';
+
+import { canUseDOM } from '@/helpers/dom';
 
 export const getBrowserAppearanceSubscriber = (
   setAppearance: (
-    appearance: NonNullable<AppRootContextInterface['appearance']>
-  ) => void
+    appearance: NonNullable<AppRootContextInterface['appearance']>,
+  ) => void,
 ): (() => void) => {
   if (!canUseDOM || !window.matchMedia) {
     return () => {};

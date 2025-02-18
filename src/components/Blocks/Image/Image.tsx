@@ -87,7 +87,9 @@ export const Image = ({
           onError={handleImageError}
         />
       )}
-      {needShowFallbackIcon && <div className={styles.fallback}>{fallbackIcon}</div>}
+      {needShowFallbackIcon && (
+        <div className={styles.fallback}>{fallbackIcon}</div>
+      )}
       {children}
     </div>
   );

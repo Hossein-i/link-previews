@@ -7,11 +7,11 @@ import { getBrowserAppearanceSubscriber } from './helpers/getBrowserAppearanceSu
 import { getInitialAppearance } from './helpers/getInitialAppearance';
 
 export const useAppearance = (
-  appearanceProp?: AppRootContextInterface['appearance']
+  appearanceProp?: AppRootContextInterface['appearance'],
 ): NonNullable<AppRootContextInterface['appearance']> => {
   const { appearance: contextAppearance } = useContext(AppRootContext);
   const [appearance, setAppearance] = useState(
-    appearanceProp || contextAppearance || getInitialAppearance()
+    appearanceProp || contextAppearance || getInitialAppearance(),
   );
 
   useEffect(() => {

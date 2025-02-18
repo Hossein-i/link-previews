@@ -11,7 +11,11 @@ describe('Link component', () => {
   });
 
   test('applies className correctly', () => {
-    render(<Link href="https://example.com" className="custom-class">Click me</Link>);
+    render(
+      <Link href="https://example.com" className="custom-class">
+        Click me
+      </Link>,
+    );
     const linkElement = screen.getByText('Click me');
     expect(linkElement).toHaveClass('custom-class');
   });

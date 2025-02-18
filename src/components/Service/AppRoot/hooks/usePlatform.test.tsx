@@ -1,12 +1,18 @@
 import { render } from '@testing-library/react';
-import { usePlatform } from './usePlatform';
-import '@testing-library/jest-dom';
+
 import { AppRootContext, AppRootContextInterface } from '../AppRootContext';
 import { getInitialPlatform } from './helpers/getInitialPlatform';
+import { usePlatform } from './usePlatform';
+
+import '@testing-library/jest-dom';
 
 jest.mock('./helpers/getInitialPlatform');
 
-const TestComponent = ({ platform }: { platform?: "base" | "ios" | undefined }) => {
+const TestComponent = ({
+  platform,
+}: {
+  platform?: 'base' | 'ios' | undefined;
+}) => {
   const result = usePlatform(platform);
   return <div>{result}</div>;
 };
@@ -32,7 +38,7 @@ describe('usePlatform', () => {
     const { getByText } = render(
       <AppRootContext.Provider value={contextValue}>
         <TestComponent />
-      </AppRootContext.Provider>
+      </AppRootContext.Provider>,
     );
     expect(getByText('ios')).toBeInTheDocument();
   });
@@ -46,7 +52,7 @@ describe('usePlatform', () => {
     const { getByText } = render(
       <AppRootContext.Provider value={contextValue}>
         <TestComponent />
-      </AppRootContext.Provider>
+      </AppRootContext.Provider>,
     );
     expect(getByText('defaultPlatform')).toBeInTheDocument();
   });
@@ -60,7 +66,7 @@ describe('usePlatform', () => {
     const { getByText } = render(
       <AppRootContext.Provider value={contextValue}>
         <TestComponent />
-      </AppRootContext.Provider>
+      </AppRootContext.Provider>,
     );
     expect(getByText('defaultPlatform')).toBeInTheDocument();
   });
