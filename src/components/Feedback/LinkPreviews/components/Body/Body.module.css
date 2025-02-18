@@ -1,0 +1,5 @@
+.wrapper {
+  background: var(--lp--secondary_bg_color);
+  padding: 8px;
+  border-radius: 12px;
+}
